@@ -1,34 +1,34 @@
 <template>
-  <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-
-    <!-- ======== di hapus ========= -->
-    <!-- <CreateRoom/> -->
-        <!-- ======== di hapus ========= -->
-
+  <div class="home teal">
+    <div class="home__container">
+      <home-input-box></home-input-box>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-    // <!-- ======== di hapus ========= -->
-
-// import CreateRoom from '@/components/CreateRoom.vue'
-    // <!-- ======== di hapus ========= -->
-
-
+import HomeInputBox from '@/components/Home/HomeInputBox.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
-
-//========== di hapus =============
-    // CreateRoom
-    //========== di hapus =============
-
+    HomeInputBox
   }
 }
 </script>
+
+<style lang="scss">
+.home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>
