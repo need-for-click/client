@@ -40,9 +40,7 @@ export default {}
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-#containers {
-  /* border: 1px solid black; */
-}
+
 
 #createroom {
   border: 2px solid beige;
