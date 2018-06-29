@@ -25,7 +25,7 @@
     <br>
   <div>
     <ul>
-      <li v-for="(room, index) in rooms" :key="index"> <button @click="chooseRoom(room.roomname)" > {{room.roomname}} </button>  </li>
+      <li v-for="(room, index) in rooms" :key="index"> <button @click="chooseRoom(room.key)" > {{room.roomname}} </button>  </li>
     </ul>
   </div>
   </div>
@@ -61,10 +61,10 @@ export default {
       console.log(obj)
     },
     addRoom () {
-      let roomPlay = db.ref('rooms/' + 'player 1')
+      let roomPlay = db.ref('rooms/' + this.roomname)
       let obj = {
         nickname: localStorage.getItem('nickname'),
-        roomname: this.roomname
+        player: 'player 1'
       }
       roomPlay.set(obj)
         .then(snapshot => {
@@ -86,20 +86,19 @@ export default {
         snapshot.forEach(snap => {
           // console.log('ini key', snap.key)
           // console.log('ini value',snap.val())
-          if (temp.indexOf(snap.val().roomname)===-1) {
-            console.log(temp.indexOf(snap.val().roomname))
-            console.log(snap.val().roomname)
-           temp.push(snap.val()) 
-          }
+          // if (temp.indexOf(snap.val().player)===-1) {
+            console.log(snap.key)
+           temp.push(snap.key) 
+          
         })
       })
       this.rooms = temp
     },
     playerDua () {
-      let roomPlay = db.ref('rooms/' + 'player 2')
+      let roomPlay = db.ref('rooms/' +  localStorage.getItem('roomname'))
       let obj = {
         nickname: localStorage.getItem('nickname'),
-        roomname: localStorage.getItem('roomname')
+        player: 'player 2'
       }
       roomPlay.set(obj)
         .then(snapshot => {
@@ -111,7 +110,7 @@ export default {
       let roomPlay = db.ref('rooms/' + 'player 3')
       let obj = {
         nickname: localStorage.getItem('nickname'),
-        roomname: localStorage.getItem('roomname')
+        roomname: 'player 3'
       }
       roomPlay.set(obj)
         .then(snapshot => {
@@ -123,7 +122,7 @@ export default {
       let roomPlay = db.ref('rooms/' + 'player 4')
       let obj = {
         nickname: localStorage.getItem('nickname'),
-        roomname: localStorage.getItem('roomname')
+        roomname: 'player 4'
       }
       roomPlay.set(obj)
         .then(snapshot => {

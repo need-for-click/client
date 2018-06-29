@@ -1,7 +1,6 @@
 <template>
   <div>
     <div id="containers" class="container">
-
       <h1>Need For Click</h1>
       <div id="rowroom" class="row">
         <div class="col s1"></div>
