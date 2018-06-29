@@ -11,7 +11,7 @@
     </div>
     <div class="track__line">&nbsp;</div>
     <div class="track__car" :style="`left: ${carPosition}%;`">
-      <img class="track__car-item" src="@/assets/car.svg" alt="car">
+      <img class="track__car-item" src="@/assets/player-1.svg" alt="car">
     </div>
   </div>
 </template>
