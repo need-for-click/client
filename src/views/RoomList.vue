@@ -1,16 +1,16 @@
 <template>
   <div class="join-room">
-    <join-room-list></join-room-list>
+    <ListRoom/>
   </div>
 </template>
 
 <script>
-import JoinRoomList from '@/components/JoinRoom/JoinRoomList.vue'
+import ListRoom from '@/components/RoomList/ListRoom.vue'
 
 export default {
-  name: 'JoinRoom',
+  name: 'roomlist',
   components: {
-    JoinRoomList
+    ListRoom
   }
 }
 </script>
