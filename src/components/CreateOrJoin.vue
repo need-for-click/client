@@ -1,12 +1,54 @@
 <template>
-  <div class="create-or-join">
-    <button class="button button--amber">Create<br>Room</button>
-    <button class="button button--light-blue">Join<br>Room</button>
+  <div>
+    <div id="containers" class="container">
+      <h1>Need For Click</h1>
+      <div id="rowroom" class="row">
+        <div class="col s1"></div>
+
+        <a @click="goToCreateRoomPage">
+          <div id="createroom" class="col s5 center">
+            <h1>Create Room</h1>
+            <div class="overlay">
+              <div class="text">
+                <h2>Let's Go...</h2>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a @click="goToRoomListPage">
+          <div id="chooseroom" class="col s5 center">
+            <h1>Choose Room</h1>
+            <div class="overlay">
+              <div class="text">
+                <h2>Let's Go...</h2>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'createorjoin',
+  data () {
+
+  },
+  methods: {
+    goToCreateRoomPage () {
+      this.$router.push({name: 'createroom'})
+    },
+    goToRoomListPage () {
+      this.$router.push({name: 'roomlist'})
+    }
+    // ...mapActions({
+      
+    // })
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -13,12 +13,12 @@
         <div class="card-content">
           <form>
             <div class="field title">
-              <label for="input-box__label nickname">Room Name</label>
-              <input class="input-box__input" type="text" name="nickname" v-model="nickname">
+              <label for="input-box__label roomname">Room Name</label>
+              <input class="input-box__input" type="text" name="roomname" v-model="roomname">
             </div>
 
             <div class="field center-align">
-              <a @click="addPlayer" class="input-box__btn waves-effect waves-light btn-large">
+              <a @click="createNewRoomVuex" class="input-box__btn waves-effect waves-light btn-large">
                 <i class="material-icons right"></i>Create</a>
             </div>
           </form>
@@ -31,33 +31,23 @@
 </template>
 
 <script>
-// import {mapState} from 'vuex'
-// import {db} from '@/firebase.js'
-// export default {
-//   name: 'HomeInputBox',
-//   data () {
-//     return {
-//       nickname: ''
-//     }
-//   },
-//   methods: {
-//     addPlayer () {
-//       let regUser = db.ref('users')
-//       let obj = {
-//         nickname: this.nickname
-//       }
-//       localStorage.setItem('nickname', this.nickname)
-//       regUser.push(obj)
-//         .then(snapshot => {
-//           console.log(`Player ${this.nickname} Berhasil masuk`)
-//         })
-//         .catch(err => {
-//           console.log(err)
-//         })
-//       console.log('masuk')
-//     }
-//   }
-// }
+import { mapActions } from 'vuex'
+export default {
+  name: 'createnewroom',
+  data () {
+    return {
+      roomname: ''
+    }
+  },
+  methods:{
+    ...mapActions([
+      'createNewRoom'
+    ]),
+    createNewRoomVuex () {
+      this.createNewRoom(this.roomname)
+    }
+  }
+}
 </script>
 
 <style lang="scss">

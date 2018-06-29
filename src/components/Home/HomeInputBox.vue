@@ -12,7 +12,7 @@
         </div>
 
         <div class="field center-align">
-          <a @click="addPlayer" class="input-box__btn waves-effect waves-light btn-large"><i class="material-icons right">arrow_forward</i>next</a>
+          <a @click="pushNickName" class="input-box__btn waves-effect waves-light btn-large"><i class="material-icons right">arrow_forward</i>NEXT</a>
         </div>
       </form>
     </div>
@@ -20,33 +20,23 @@
 </template>
 
 <script>
-// import {mapState} from 'vuex'
-// import {db} from '@/firebase.js'
-// export default {
-//   name: 'HomeInputBox',
-//   data () {
-//     return {
-//       nickname: ''
-//     }
-//   },
-//   methods: {
-//     addPlayer () {
-//       let regUser = db.ref('users')
-//       let obj = {
-//         nickname: this.nickname
-//       }
-//       localStorage.setItem('nickname', this.nickname)
-//       regUser.push(obj)
-//         .then(snapshot => {
-//           console.log(`Player ${this.nickname} Berhasil masuk`)
-//         })
-//         .catch(err => {
-//           console.log(err)
-//         })
-//       console.log('masuk')
-//     }
-//   }
-// }
+export default {
+  name: 'homeinputbox',
+  data () {
+    return {
+      nickname: ''
+    }
+  },
+  methods: {
+    pushNickName () {
+      localStorage.setItem('nickname', this.nickname)
+      this.$router.push({name: 'mainmenu'})
+    }
+  },
+  created () {
+
+  }
+}
 </script>
 
 <style lang="scss">
