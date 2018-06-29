@@ -1,33 +1,7 @@
 <template>
-  <div>
-    <div id="containers" class="container">
-      <h1>Need For Click</h1>
-      <div id="rowroom" class="row">
-        <div class="col s1"></div>
-
-        <a @click="goToCreateRoomPage">
-          <div id="createroom" class="col s5 center">
-            <h1>Create Room</h1>
-            <div class="overlay">
-              <div class="text">
-                <h2>Let's Go...</h2>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a @click="goToRoomListPage">
-          <div id="chooseroom" class="col s5 center">
-            <h1>Choose Room</h1>
-            <div class="overlay">
-              <div class="text">
-                <h2>Let's Go...</h2>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
+  <div class="create-or-join">
+    <button @click="goToCreateRoomPage" class="button button--amber">Create<br>Room</button>
+    <button @click="goToRoomListPage" class="button button--light-blue">Join<br>Room</button>
   </div>
 </template>
 
