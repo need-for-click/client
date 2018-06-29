@@ -1,5 +1,5 @@
 <template>
-  <div class="CreateRoom">
+  <div class="main-menu">
     <CreateOrJoin />
   </div>
 </template>
@@ -16,3 +16,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.main-menu {
+  height: 100vh;
+}
+</style>
+
