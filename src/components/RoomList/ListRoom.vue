@@ -4,51 +4,34 @@
     <div class="card-content">
       <div class="collection">
         <a
-          v-for="(room, index) in rooms"
-          href="#!"
-          :key="index"
-          class="collection-item">
+          v-for="room of listroom "
+          :key="room['.key']"
+          class="collection-item" @click="pickRoom(room['.key'])">
         <span
           class="new badge"
           data-badge-caption="players">
-        {{ room.players }}
-        </span>{{ room.name }}</a>
+        somthing player
+        </span>{{ room['.key'] }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { db } from '@/firebase.js'
 export default {
   name: 'listroom',
+  firebase: {
+    listroom: db.ref('/Rooms/')
+  },
   data () {
     return {
-      rooms: [
-        {
-          name: 'Rockfort',
-          players: 4
-        },
-        {
-          name: 'Suzuka',
-          players: 2
-        },
-        {
-          name: 'Mugello',
-          players: 3
-        },
-        {
-          name: 'Silverstone',
-          players: 1
-        },
-        {
-          name: 'Laguna Seca',
-          players: 3
-        },
-        {
-          name: 'Tyrestone',
-          players: 2
-        }
-      ]
+
+    }
+  },
+  methods: {
+    pickRoom(roomname){
+      localStorage.setItem('roomname',roomname)
     }
   }
 }

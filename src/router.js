@@ -6,6 +6,7 @@ import Tracks from './views/Tracks.vue'
 import MainMenu from './views/MainMenu.vue'
 import CreateRoom from './views/CreateRoom.vue'
 import ChoosePlayer from './views/ChoosePlayer.vue'
+import RoomList from './views/RoomList.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/chooseplayer/',
       name: 'chooseplater',
       component: ChoosePlayer
+    },
+    {
+      path: '/roomlist/',
+      name: 'roomlist',
+      component: RoomList
     }
   ]
 })

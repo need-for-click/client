@@ -30,6 +30,7 @@ export default {
   methods: {
     pushNickName () {
       localStorage.setItem('nickname', this.nickname)
+      this.$router.push({name: 'mainmenu'})
     }
   },
   created () {

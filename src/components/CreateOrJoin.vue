@@ -16,7 +16,7 @@
           </div>
         </a>
 
-        <a href="">
+        <a @click="goToRoomListPage">
           <div id="chooseroom" class="col s5 center">
             <h1>Choose Room</h1>
             <div class="overlay">
@@ -43,9 +43,12 @@ export default {
     goToCreateRoomPage () {
       this.$router.push({name: 'createroom'})
     },
-    ...mapActions({
+    goToRoomListPage () {
+      this.$router.push({name: 'roomlist'})
+    }
+    // ...mapActions({
       
-    })
+    // })
   }
 }
 </script>

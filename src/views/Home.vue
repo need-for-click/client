@@ -1,7 +1,7 @@
 <template>
   <div class="home teal">
     <div class="home__container">
-      <home-input-box></home-input-box>
+      <HomeInputBox/>
     </div>
   </div>
 </template>

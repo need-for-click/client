@@ -8,7 +8,7 @@
 import CreateNewRoom from '@/components/CreateNewRoom.vue'
 
 export default {
-  name: 'New room',
+  name: 'createroom',
   components: {
     CreateNewRoom
   }
