@@ -7,7 +7,7 @@
           <!-- <img src="@/assets/speedometer.jpeg"> -->
           <span class="card-title">
             <h4>
-              <i class="small material-icons">home</i>    Input Room</h4>
+              <i class="small material-icons">home</i>    Create Room</h4>
           </span>
         </div>
         <div class="card-content">
@@ -78,5 +78,7 @@
   &__input {
     font-size: 20px !important;
   }
+
+
 }
 </style>
