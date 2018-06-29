@@ -1,38 +1,137 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
+    <div>
+      <h1>your nickname</h1>
+    <input type="text" v-model="nickname" placeholder="username" >
+    <!-- <input type="text" v-model="player" placeholder="player" > -->
+    <button @click="addPlayer">submit</button>
+    </div>
+    <div>
+      <h1>create room</h1>
+    <input type="text" v-model="roomname" placeholder="roomname" >
+    <button @click="addRoom" >Submit</button>
+    </div>
+    <button @click="checkRoom" > check room </button>
+  <br>
+  <br>
+  <br>
+
+    <div>
+      <button @click="playerDua" >player2</button>
+      <button @click="playerTiga" >player3</button>
+      <button @click="playerEmpat" >player4</button>
+    </div>
+    <br>
+    <br>
+  <div>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank">eslint</a></li>
+      <li v-for="(room, index) in rooms" :key="index"> <button @click="chooseRoom(room.key)" > {{room.roomname}} </button>  </li>
     </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  </div>
   </div>
 </template>
 
 <script>
+import {db} from '../firebase.js'
+
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {
+      nickname: '',
+      player: '',
+      roomname: '',
+      rooms: []
+    }
+  },
+  methods: {
+    addPlayer () {
+      let regUser = db.ref('users')
+      let obj = {
+        nickname: this.nickname
+      }
+      localStorage.setItem('nickname',this.nickname)
+      regUser.push(obj)
+        .then(snapshot => {
+          console.log('user added to database')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      console.log(obj)
+    },
+    addRoom () {
+      let roomPlay = db.ref('rooms/' + this.roomname)
+      let obj = {
+        nickname: localStorage.getItem('nickname'),
+        player: 'player 1'
+      }
+      roomPlay.set(obj)
+        .then(snapshot => {
+          console.log('room added and player joined')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    chooseRoom (value) {
+      localStorage.setItem('roomname', value)
+      console.log(value)
+    },
+    checkRoom () {
+      let rooms = db.ref('rooms')
+      let self = this
+      let temp = []
+      rooms.on('value', function (snapshot) {
+        snapshot.forEach(snap => {
+          // console.log('ini key', snap.key)
+          // console.log('ini value',snap.val())
+          // if (temp.indexOf(snap.val().player)===-1) {
+            console.log(snap.key)
+           temp.push(snap.key) 
+          
+        })
+      })
+      this.rooms = temp
+    },
+    playerDua () {
+      let roomPlay = db.ref('rooms/' +  localStorage.getItem('roomname'))
+      let obj = {
+        nickname: localStorage.getItem('nickname'),
+        player: 'player 2'
+      }
+      roomPlay.set(obj)
+        .then(snapshot => {
+          console.log('player 2 masuk ke room')
+        })
+      console.log('player2')
+    },
+    playerTiga () {
+      let roomPlay = db.ref('rooms/' + 'player 3')
+      let obj = {
+        nickname: localStorage.getItem('nickname'),
+        roomname: 'player 3'
+      }
+      roomPlay.set(obj)
+        .then(snapshot => {
+          console.log('player 3 masuk ke room')
+        })
+      console.log('player3')
+    },
+    playerEmpat () {
+      let roomPlay = db.ref('rooms/' + 'player 4')
+      let obj = {
+        nickname: localStorage.getItem('nickname'),
+        roomname: 'player 4'
+      }
+      roomPlay.set(obj)
+        .then(snapshot => {
+          console.log('player 4 masuk ke room')
+        })
+      console.log('player4')
+    },
+    created () {
+    }
   }
 }
 </script>

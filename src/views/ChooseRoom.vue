@@ -1,6 +1,6 @@
 <template>
   <div class="CreateRoom">
-    <CreateRoom/>
+    <CreateRoom />
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import CreateRoom from '@/components/CreateRoom.vue'
 
 export default {
-  name: 'CreateRoom',
+  name: 'ChooseRoom',
   components: {
     CreateRoom
   }

@@ -8,11 +8,11 @@
       <form>
         <div class="field title">
           <label for="input-box__label nickname">Nickname: </label>
-          <input class="input-box__input" type="text" name="nickname">
+          <input class="input-box__input" type="text" name="nickname" v-model="nickname">
         </div>
 
         <div class="field center-align">
-          <a class="input-box__btn waves-effect waves-light btn-large"><i class="material-icons right">arrow_forward</i>next</a>
+          <a @click="addPlayer" class="input-box__btn waves-effect waves-light btn-large"><i class="material-icons right">arrow_forward</i>next</a>
         </div>
       </form>
     </div>
@@ -20,8 +20,32 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import {db} from '@/firebase.js'
 export default {
-  name: 'HomeInputBox'
+  name: 'HomeInputBox',
+  data () {
+    return {
+      nickname: ''
+    }
+  },
+  methods: {
+    addPlayer () {
+      let regUser = db.ref('users')
+      let obj = {
+        nickname: this.nickname
+      }
+      localStorage.setItem('nickname', this.nickname)
+      regUser.push(obj)
+        .then(snapshot => {
+          console.log(`Player ${this.nickname} Berhasil masuk`)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      console.log('masuk')
+    }
+  }
 }
 </script>
 
