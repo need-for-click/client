@@ -5,7 +5,7 @@
       <div id="rowroom" class="row">
         <div class="col s1"></div>
 
-        <a href="">
+        <a @click="goToCreateRoomPage">
           <div id="createroom" class="col s5 center">
             <h1>Create Room</h1>
             <div class="overlay">
@@ -34,7 +34,20 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'createorjoin',
+  data () {
+
+  },
+  methods: {
+    goToCreateRoomPage () {
+      this.$router.push({name: 'createroom'})
+    },
+    ...mapActions({
+      
+    })
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
