@@ -44,7 +44,10 @@ export default {
       'createNewRoom'
     ]),
     createNewRoomVuex () {
+      localStorage.setItem('roomname', this.roomname)
+      localStorage.setItem('player', 'player1')
       this.createNewRoom(this.roomname)
+      this.$router.push({name:'tracks'})
     }
   }
 }

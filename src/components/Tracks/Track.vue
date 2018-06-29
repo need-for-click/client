@@ -1,32 +1,114 @@
 <template>
-  <div class="track">
-    <div class="track__line">&nbsp;</div>
-    <div class="track__lane">
-      <div class="track__lane-start track__lane-point">
-        <span class="track__lane-text">Start</span>
+  <div class="track-list">
+    <div class="track">
+      <div class="track__line">&nbsp;</div>
+      <div class="track__lane">
+        <div class="track__lane-start track__lane-point">
+          <span class="track__lane-text">Start</span>
+          </div>
+        <div class="track__lane-finish track__lane-point">
+          <span class="track__lane-text">Finish</span>
         </div>
-      <div class="track__lane-finish track__lane-point">
-        <span class="track__lane-text">Finish</span>
+      </div>
+      <div class="track__line">&nbsp;</div>
+      <div class="track__car" :style="`left: ${positionCar[0].player1.carPosition}%;`">
+        <img class="track__car-item" src="@/assets/player-1.svg" alt="car">
       </div>
     </div>
-    <div class="track__line">&nbsp;</div>
-    <div class="track__car" :style="`left: ${carPosition}%;`">
-      <img class="track__car-item" src="@/assets/player-1.svg" alt="car">
+    <div class="track">
+      <div class="track__line">&nbsp;</div>
+      <div class="track__lane">
+        <div class="track__lane-start track__lane-point">
+          <span class="track__lane-text">Start</span>
+          </div>
+        <div class="track__lane-finish track__lane-point">
+          <span class="track__lane-text">Finish</span>
+        </div>
+      </div>
+      <div class="track__line">&nbsp;</div>
+      <div class="track__car" :style="`left: ${positionCar[0].player2.carPosition}%;`">
+        <img class="track__car-item" src="@/assets/player-2.svg" alt="car">
+      </div>
     </div>
+    <div class="track">
+      <div class="track__line">&nbsp;</div>
+      <div class="track__lane">
+        <div class="track__lane-start track__lane-point">
+          <span class="track__lane-text">Start</span>
+          </div>
+        <div class="track__lane-finish track__lane-point">
+          <span class="track__lane-text">Finish</span>
+        </div>
+      </div>
+      <div class="track__line">&nbsp;</div>
+      <div class="track__car" :style="`left: ${positionCar[0].player3.carPosition}%;`">
+        <img class="track__car-item" src="@/assets/player-3.svg" alt="car">
+      </div>
+    </div>
+    <div class="track">
+      <div class="track__line">&nbsp;</div>
+      <div class="track__lane">
+        <div class="track__lane-start track__lane-point">
+          <span class="track__lane-text">Start</span>
+          </div>
+        <div class="track__lane-finish track__lane-point">
+          <span class="track__lane-text">Finish</span>
+        </div>
+      </div>
+      <div class="track__line">&nbsp;</div>
+      <div class="track__car" :style="`left: ${positionCar[0].player4.carPosition}%;`">
+        <img class="track__car-item" src="@/assets/player-4.svg" alt="car">
+      </div>
+    </div>
+    <button @click="accelerate" class="tracks__button btn-large">Accelerate</button>
   </div>
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
+import alertify from 'alertifyjs'
+import {db} from '@/firebase.js'
 export default {
   name: 'Track',
-  props: {
-    carPosition: Number
-  }
+  data () {
+    return {
+      carPosition: 0,
+      position: 0
+    }
+  },
+  firebase: {
+    positionCar: db.ref('/Rooms/')
+  },
+  methods: {
+    accelerate () {
+      this.carPosition += 2
+      db.ref('/Rooms/' + localStorage.getItem('roomname') + '/' + localStorage.getItem('player')).update ({
+        carPosition: this.carPosition
+      })
+      .then(response => {
+        console.log(this.positionCar[0].player1.carPosition)
+      })
+    },
+  },
+  updated() {
+    console.log('asal')
+    if (this.positionCar[0].player1.carPosition == 84 || this.positionCar[0].player2.carPosition == 84 || this.positionCar[0].player3.carPosition == 84 || this.positionCar[0].player4.carPosition == 84) {
+      alertify
+        .alert(`The game has done` , function(){
+          alertify.message('The game is done');
+        });
+    }
+  },
 }
 </script>
 
 <style lang="scss">
 @import '@/assets/scss/main.scss';
+
+.track-list {
+  height: 100%;
+  width: 100%;
+}
 
 .track {
   width: 90%;

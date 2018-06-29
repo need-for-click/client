@@ -11,10 +11,30 @@ export default new Vuex.Store({
 
   },
   actions: {
-    createNewRoom ({commit}, roomname) {
+    createNewRoom ({ commit }, roomname) {
       db.ref('/Rooms/' + roomname).child('player1').set({
-        nickname: localStorage.getItem('nickname')
+        nickname: localStorage.getItem('nickname'),
+        carPosition: 0
       })
+        .then(Response => {
+          db.ref('/Players/Player1').set({
+            nickname: localStorage.getItem('nickname'),
+            status: false
+          })
+        })
+    },
+    pickPlayer ({ commit }, playerNumber) {
+      localStorage.setItem('player', 'player' + playerNumber)
+      db.ref('/Players/Player' + playerNumber).set({
+        nickname: localStorage.getItem('nickname'),
+        status: false
+      })
+        .then(Response => {
+          db.ref('/Rooms/' + localStorage.getItem('roomname') + '/player' + playerNumber).set({
+            nickname: localStorage.getItem('nickname'),
+            carPosition: 0
+          })
+        })
     }
   }
 })

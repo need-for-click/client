@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       path: '/chooseplayer/',
-      name: 'chooseplater',
+      name: 'chooseplayer',
       component: ChoosePlayer
     },
     {

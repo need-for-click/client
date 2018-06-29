@@ -1,12 +1,11 @@
 <template>
   <div class="tracks light-green">
-    <v-track :carPosition="position"></v-track>
-    <button @click="accelerate" class="tracks__button btn-large">Accelerate</button>
+    <v-track></v-track>
   </div>
 </template>
 
 <script>
-import Track from '@/components/Tracks//Track.vue'
+import Track from '@/components/Tracks/Track.vue'
 
 export default {
   name: 'Tracks',
@@ -14,14 +13,9 @@ export default {
     'v-track': Track
   },
   data () {
-    return {
-      position: 0
-    }
   },
   methods: {
-    accelerate () {
-      this.position += 2
-    }
+
   }
 }
 </script>
