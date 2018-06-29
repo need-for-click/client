@@ -1,18 +1,18 @@
 <template>
   <div class="CreateRoom">
-    <CreateRoom />
+    <CreateOrJoin />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import CreateRoom from '@/components/CreateRoom.vue'
+import CreateOrJoin from '@/components/CreateOrJoin.vue'
 
 export default {
-  name: 'ChooseRoom',
+  name: 'MainMenu',
   components: {
-    CreateRoom
+    CreateOrJoin
   }
 }
 </script>

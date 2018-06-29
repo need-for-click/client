@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'JoinRoomList',
+  name: 'listroom',
   data () {
     return {
       rooms: [

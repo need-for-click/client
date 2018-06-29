@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Tracks from './views/Tracks.vue'
+import MainMenu from './views/MainMenu.vue'
+import CreateRoom from './views/CreateRoom.vue'
+import ChoosePlayer from './views/ChoosePlayer.vue'
 
 Vue.use(Router)
 
@@ -22,6 +25,21 @@ export default new Router({
       path: '/tracks/',
       name: 'tracks',
       component: Tracks
+    },
+    {
+      path: '/mainmenu/',
+      name: 'mainmenu',
+      component: MainMenu
+    },
+    {
+      path: '/createroom/',
+      name: 'createroom',
+      component: CreateRoom
+    },
+    {
+      path: '/chooseplayer/',
+      name: 'chooseplater',
+      component: ChoosePlayer
     }
   ]
 })

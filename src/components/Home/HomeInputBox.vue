@@ -20,33 +20,33 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-import {db} from '@/firebase.js'
-export default {
-  name: 'HomeInputBox',
-  data () {
-    return {
-      nickname: ''
-    }
-  },
-  methods: {
-    addPlayer () {
-      let regUser = db.ref('users')
-      let obj = {
-        nickname: this.nickname
-      }
-      localStorage.setItem('nickname', this.nickname)
-      regUser.push(obj)
-        .then(snapshot => {
-          console.log(`Player ${this.nickname} Berhasil masuk`)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-      console.log('masuk')
-    }
-  }
-}
+// import {mapState} from 'vuex'
+// import {db} from '@/firebase.js'
+// export default {
+//   name: 'HomeInputBox',
+//   data () {
+//     return {
+//       nickname: ''
+//     }
+//   },
+//   methods: {
+//     addPlayer () {
+//       let regUser = db.ref('users')
+//       let obj = {
+//         nickname: this.nickname
+//       }
+//       localStorage.setItem('nickname', this.nickname)
+//       regUser.push(obj)
+//         .then(snapshot => {
+//           console.log(`Player ${this.nickname} Berhasil masuk`)
+//         })
+//         .catch(err => {
+//           console.log(err)
+//         })
+//       console.log('masuk')
+//     }
+//   }
+// }
 </script>
 
 <style lang="scss">
