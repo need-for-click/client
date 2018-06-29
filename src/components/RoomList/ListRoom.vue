@@ -7,11 +7,7 @@
           v-for="room of listroom "
           :key="room['.key']"
           class="collection-item" @click="pickRoom(room['.key'])">
-        <span
-          class="new badge"
-          data-badge-caption="players">
-        somthing player
-        </span>{{ room['.key'] }}</a>
+        {{ room['.key'] }}</a>
       </div>
     </div>
   </div>
