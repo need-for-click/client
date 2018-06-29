@@ -32,6 +32,7 @@ export default {
   methods: {
     pickRoom(roomname){
       localStorage.setItem('roomname',roomname)
+      this.$router.push({name:'chooseplayer'})
     }
   }
 }
